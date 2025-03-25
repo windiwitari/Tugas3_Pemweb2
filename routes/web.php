@@ -4,14 +4,22 @@ use Illuminate\Support\Facades\Route;
 use Livewire\Volt\Volt;
 
 Route::get("/home", function () {
-    return "Selamat datang di e-commerce kami";
+    return view('web.homepage');
 });
 Route::get("/product", function () {
-    return "Halaman Produk";
+    return view('web.product');
 });
 
-Route::get("/products/{id}", function ($id) {
-    return "Detail Produk dengan ID: " . $id;
+Route::get("/products/{slug}", function () {
+    return "Halaman Single Produk: " ;
+});
+
+Route::get("/categories", function () {
+    return view('web.categories');
+});
+
+Route::get("/categories/{slug}", function () {
+    return "Halaman Single Kategori: " ;
 });
 
 Route::get("/cart", function () {
@@ -21,13 +29,11 @@ Route::get("/cart", function () {
 Route::get("/checkout", function () {
     return "Halaman Checkout";
 });
-Route::get("/user", function () {
-    return "Halaman Profil e-commerce";
-});
 
-Route::get('/', function () {
-    return view('welcome');
-})->name('home');
+
+// Route::get('/', function () {
+//     return view('welcome');
+// })->name('home');
 
 Route::view('dashboard', 'dashboard')
     ->middleware(['auth', 'verified'])
